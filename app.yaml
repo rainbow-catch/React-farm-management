@@ -1,0 +1,22 @@
+runtime: nodejs10
+env: standard
+instance_class: F1
+handlers:
+  - url: /
+    static_files: build/index.html
+    require_matching_file: false
+    upload: build/index.html
+  - url: /(.*)
+    static_files: build/\1
+    require_matching_file: false
+    upload: build/(.*)
+  - url: .*
+    script: auto
+env_variables:
+  FIREBASE_PROJECT_ID: new-app-252008
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: automatic
+  min_pending_latency: automatic
+  max_pending_latency: automatic
+network: {}
