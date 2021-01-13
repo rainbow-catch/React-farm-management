@@ -3,24 +3,30 @@ import { FuseUtils } from '@fuse';
 const sampleLabels = [
     {
         'id': '26022e4129ad3a5sc28b36cd',
-        'name': 'High Priority',
-        'class': 'bg-red text-white'
-    },
-    {
-        'id': '56027e4119ad3a5dc28b36cd',
-        'name': 'Design',
+        'name': 'Limite de peso',
         'class': 'bg-orange text-white'
     },
     {
+        'id': '56027e4119ad3a5dc28b36cd',
+        'name': 'Grávida',
+        'class': 'bg-pink text-white'
+    },
+    {
         'id': '5640635e19ad3a5dc21416b2',
-        'name': 'App',
+        'name': 'Visita Veterinária',
         'class': 'bg-blue text-white'
     },
     {
         'id': '6540635g19ad3s5dc31412b2',
-        'name': 'Feature',
+        'name': 'Peso Ideal',
         'class': 'bg-green text-white'
+    },
+    {
+        'id': '6540635g19ad3s5dc31412b3',
+        'name': 'Baixo peso',
+        'class': 'bg-red text-white'
     }
+
 ];
 
 const sampleMembers = [

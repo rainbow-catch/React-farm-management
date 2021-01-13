@@ -116,7 +116,7 @@ class Auth extends Component {
         firebaseService.onAuthStateChanged(authUser => {
             if (authUser) {
 
-                this.props.showMessage({ message: 'Logging in Kestrel Data!' });
+                this.props.showMessage({ message: 'Logging in Kosmo Sat!' });
 
                 /**
                  * Retrieve user data from Firebase
@@ -127,7 +127,7 @@ class Auth extends Component {
 
                     resolve();
 
-                    this.props.showMessage({ message: 'Logged in Kestrel Data!' });
+                    this.props.showMessage({ message: 'Logged in Kosmo Sat!' });
                 }, error => {
 
                     resolve();

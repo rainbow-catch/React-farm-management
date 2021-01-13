@@ -7,9 +7,12 @@ import moment from 'moment';
 import {useDispatch, useSelector} from 'react-redux';
 import * as Actions from 'app/main/apps/scrumboard/store/actions/index';
 import LabelModel from 'app/main/apps/scrumboard/model/LabelModel';
+//import SexModel from 'app/main/apps/scrumboard/model/SexModel';
 import CardAttachment from './attachment/CardAttachment';
+//import BirthMenu from './toolbar/BirthMenu';
 import DueMenu from './toolbar/DueMenu';
 import LabelsMenu from './toolbar/LabelsMenu';
+import LabelsSex from './toolbar/LabelsSex';
 import MembersMenu from './toolbar/MembersMenu';
 import CheckListMenu from './toolbar/CheckListMenu';
 import OptionsMenu from './toolbar/OptionsMenu';
@@ -28,6 +31,8 @@ function BoardCardForm(props)
         dispatch(Actions.updateCard(boardId, {...newCard}));
     }, 600);
     const dueDate = cardForm && cardForm.due ? moment(cardForm.due).format(moment.HTML5_FMT.DATE) : "";
+    //const birthDate = cardForm && cardForm.birth ? moment(cardForm.birth).format(moment.HTML5_FMT.DATE) : "";
+    
 
     useUpdateEffect(() => {
         updateCard(board.id, cardForm);
@@ -37,10 +42,19 @@ function BoardCardForm(props)
     {
         setInForm('due', null);
     }
+    //function removeBirth()
+    //{
+    //    setInForm('birth', null);
+    //}
 
     function toggleLabel(labelId)
     {
         setInForm('idLabels', _.xor(cardForm.idLabels, [labelId]));
+    }
+
+    function toggleSex(sexId)
+    {
+        setInForm('idSexs', _.xor(cardForm.idSexs, [sexId]));
     }
 
     function toggleMember(memberId)
@@ -105,10 +119,16 @@ function BoardCardForm(props)
                     <Toolbar className="flex w-full overflow-x-auto px-8 sm:px-16">
                         <div className="flex flex-1">
 
+                            
                             <DueMenu
                                 onDueChange={handleChange}
                                 onRemoveDue={removeDue}
                                 due={dueDate}
+                            />
+                            <LabelsSex
+                                onToggleSex={toggleSex}
+                                sexs={board.sexs}
+                                idSexs={cardForm.idSexs}
                             />
 
                             <LabelsMenu
@@ -144,6 +164,10 @@ function BoardCardForm(props)
             </DialogTitle>
 
             <DialogContent className="p-16 sm:p-24">
+
+            
+            
+
                 <div className="flex flex-col sm:flex-row sm:justify-between justify-center items-center mb-24">
                     <div className="mb-16 sm:mb-0 flex items-center">
                         <Typography>{board.name}</Typography>
@@ -156,34 +180,59 @@ function BoardCardForm(props)
                             )
                         }, [board, card])}
                     </div>
+                    
+                    
+                   
 
+                   
+                </div>
+
+                <div className="flex items-center mb-24">
+
+                   
                     {cardForm.due && (
-                        <TextField
-                            label="Due date"
-                            type="date"
-                            name="due"
-                            value={dueDate}
-                            onChange={handleChange}
-                            placeholder=" Choose a due date"
-                            className="w-full sm:w-auto"
-                            InputLabelProps={{
-                                shrink: true
-                            }}
-                            variant="outlined"
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <Icon color="action">today</Icon>
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
+
+                        <div className="mb-24">
+                            <div className="flex items-center mt-16 mb-12">
+                                <Icon className="text-20 mr-8" color="inherit">comment</Icon>
+                                <Typography className="font-600 text-16">Não mude</Typography>
+                            </div>
+
+                            <div>
+
+                                <TextField
+                                    label="data de nascimento"
+                                    type="date"
+                                    name="due"
+                                    value={dueDate}
+                                    onChange={handleChange}
+                                    placeholder=" Alerta de nascimento"
+                                    className="w-full sm:w-auto"
+                                    InputLabelProps={{
+                                        shrink: true
+                                    }}
+                                    variant="outlined"
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <Icon color="action">today</Icon>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        
                     )}
+                    
+                   
+
+
                 </div>
 
                 <div className="flex items-center mb-24">
                     <TextField
-                        label="Title"
+                        label="Numero Brinco"
                         type="text"
                         name="name"
                         value={cardForm.name}
@@ -201,6 +250,8 @@ function BoardCardForm(props)
                             )
                         }}
                     />
+                    
+                
                 </div>
 
                 <div className="w-full mb-24">
@@ -221,7 +272,7 @@ function BoardCardForm(props)
                         <div className="flex-1 mb-24">
                             <div className="flex items-center mt-16 mb-12">
                                 <Icon className="text-20 mr-8" color="inherit">label</Icon>
-                                <Typography className="font-600 text-16">Labels</Typography>
+                                <Typography className="font-600 text-16">Peso da etiqueta</Typography>
                             </div>
                             <FuseChipSelect
                                 className={cardForm.idMembers.length > 0 && 'sm:mr-8'}

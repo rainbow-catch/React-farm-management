@@ -78,9 +78,9 @@ const themesConfig = {
         palette: {
             type     : 'light',
             primary  : {
-                light       : '#87EFFF',
-                main        : '#4DBCE9',
-                dark        : '#008CB7',
+                light       : '#B8C98A',
+                main        : '#83AB3B',
+                dark        : '#4E6C29',
                 contrastText: '#FFF'
             },
             secondary: {

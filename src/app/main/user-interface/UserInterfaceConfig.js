@@ -1,7 +1,7 @@
 import React from 'react';
 import { cardedLayoutRoutes } from './page-layouts/carded/cardedLayoutRoutes';
 import { simpleLayoutRoutes } from './page-layouts/simple/simpleLayoutRoutes';
-import { cropsLayoutRoute } from './page-layouts/crops/cropsLayoutRoute';
+
 
 
 export const UserInterfaceConfig = {
@@ -9,7 +9,7 @@ export const UserInterfaceConfig = {
     routes: [
         ...cardedLayoutRoutes,
         ...simpleLayoutRoutes,
-        ...cropsLayoutRoute,
+        
         {
             path: '/ui/page-layouts/blank',
             component: React.lazy(() => import('./page-layouts/blank'))

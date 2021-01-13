@@ -12,10 +12,10 @@ function PoweredByLinks()
             }}
             className="hidden sm:flex items-center"
         >
-            <Tooltip title="Hidrofito" placement="top">
+            <Tooltip title="Kosmo Sat" placement="top">
                 <IconButton className="w-48 h-48 px-4" component="a" href="#" target="_blank" rel="noreferrer noopener">
                     <img
-                        src="assets/images/logos/hidrofito_logo.svg"
+                        src="assets/images/logos/KOSMO_SAT2.svg"
                         alt="350"
                         width="350"
                     />
@@ -23,7 +23,7 @@ function PoweredByLinks()
             </Tooltip>
            
             
-            <Tooltip title="Macro-Agua" placement="left">
+            <Tooltip title="Fidesterra" placement="left">
                 <IconButton className="w-48 h-48 px-4" component="a" href="#" target="_blank" rel="noreferrer noopener">
                     <span
                         dangerouslySetInnerHTML={{

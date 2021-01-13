@@ -33,9 +33,6 @@ export const simpleLayoutRoutes = [
         path: '/ui/page-layouts/simple/tabbed',
         component: React.lazy(() => import('./tabbed'))
     },
-    {
-        path: '/ui/page-layouts/simple/monitoringTemp',
-        component: React.lazy(() => import('./monitoringTemp'))
-    }
+    
 
 ];

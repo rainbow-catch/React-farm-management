@@ -80,7 +80,7 @@ function Board(props)
                     <Hidden xsDown>
                         <Button to="/apps/scrumboard/boards/" component={Link} variant="contained">
                             <Icon className="mr-8">assessment</Icon>
-                            Boards
+                            FAZENDAS
                         </Button>
                     </Hidden>
 

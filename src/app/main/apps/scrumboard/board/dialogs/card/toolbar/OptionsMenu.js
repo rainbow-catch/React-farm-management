@@ -23,7 +23,7 @@ function OptionsMenu(props)
             </IconButton>
             <ToolbarMenu state={anchorEl} onClose={handleMenuClose}>
                 <MenuItem onClick={props.onRemoveCard}>
-                    Remove Card
+                    Retirar Brinco
                 </MenuItem>
             </ToolbarMenu>
         </div>

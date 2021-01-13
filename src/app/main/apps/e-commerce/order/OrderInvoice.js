@@ -97,7 +97,7 @@ const OrderInvoice = (props) => {
 
                             <div className={clsx(classes.seller, "flex items-center p-16")}>
 
-                                <img className="w-80" src="assets/images/logos/fuse.svg" alt="logo"/>
+                                <img className="w-80" src="assets/images/logos/HORUS_WEB.svg" alt="logo"/>
 
                                 <div className={clsx(classes.divider, "divider ml-8 mr-16 h-96")}/>
 

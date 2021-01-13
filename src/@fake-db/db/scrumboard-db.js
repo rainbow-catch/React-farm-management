@@ -5,8 +5,8 @@ const scrumboardDB = {
     boards: [
         {
             'id'      : '32gfhaf2',
-            'name'    : 'ACME Frontend Application',
-            'uri'     : 'acme-frontend-application',
+            'name'    : 'Cassilandia ciclo de engorda ',
+            'uri'     : 'Fazenda xx',
             'settings': {
                 'color'          : 'fuse-dark',
                 'subscribed'     : false,
@@ -15,7 +15,7 @@ const scrumboardDB = {
             'lists'   : [
                 {
                     'id'     : '56027cf5a2ca3839a5d36103',
-                    'name'   : 'Design',
+                    'name'   : 'talhão 1',
                     'idCards': [
                         '5603a2a3cab0c8300f6096b3',
                         '44d1.2b51ea6cc2b5d.21f4a3412e857.8ffa2d8b44ad9.ac87215ed53a1.67d4921ad8f8d.9f318bcb2'
@@ -23,7 +23,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'     : '56127cf2a2ca3539g7d36103',
-                    'name'   : 'Development',
+                    'name'   : 'talhão 2',
                     'idCards': [
                         '2837273da9b93dd84243s0f9',
                         '5787b7e4740c57bf0dffd5b6',
@@ -33,7 +33,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'     : 'faf244627326f1249525763d',
-                    'name'   : 'Upcoming Features',
+                    'name'   : 'talhão 3',
                     'idCards': [
                         'd9005a4b89ed2aadca48a6ad',
                         'f6b9d7a9247e5d794a081927',
@@ -44,7 +44,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'     : 'ad7d.9fffac5dff412.c83bca6853767.8fd7549b2b1ca.ceda8a01774c4.a5cf3976e87e4.ce79eeeea',
-                    'name'   : 'Known Bugs',
+                    'name'   : 'talhão 5',
                     'idCards': [
                         'acc6.9c673cd2f5e35.521e91d8d5991.4b2a95e0539d1.027930c0743c5.7ad1ea7bea476.e8fbe6347',
                         '3279.3d69b40cc0b75.690252b6bea08.1e1789b0b7c2e.2f264b8661ce2.84d5f56910e23.429be5e8a',
@@ -55,8 +55,8 @@ const scrumboardDB = {
             'cards'   : [
                 {
                     'id'               : '2837273da9b93dd84243s0f9',
-                    'name'             : 'Update generators',
-                    'description'      : 'Current generator doesn\'t support Node.js 6 and above.',
+                    'name'             : 'Número Brinco wf567834',
+                    'description'      : 'ciclo1',
                     'idAttachmentCover': '',
                     'idMembers'        : [
                         '26027s1930450d8bf7b10828'
@@ -80,7 +80,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : '5603a2a3cab0c8300f6096b3',
-                    'name'             : 'Change background colors',
+                    'name'             : 'wg5678799',
                     'description'      : '',
                     'idAttachmentCover': '67027cahbe3b52ecf2dc631c',
                     'idMembers'        : [
@@ -90,18 +90,21 @@ const scrumboardDB = {
                         '56027e4119ad3a5dc28b36cd',
                         '5640635e19ad3a5dc21416b2'
                     ],
+                    'idSexs'         : [
+                        '56027e4119ad3a5dc2854667'
+                    ],
                     'attachments'      : [
                         {
                             'id'  : '67027cahbe3b52ecf2dc631c',
                             'name': 'mail.jpg',
-                            'src' : 'assets/images/scrumboard/mail.jpg',
+                            'src' : 'assets/images/scrumboard/cow1.jpg',
                             'time': 'Added Nov 3 at 15:22AM',
                             'type': 'image'
                         },
                         {
                             'id'  : '56027cfcbe1b72ecf1fc452a',
                             'name': 'calendar.jpg',
-                            'src' : 'assets/images/scrumboard/calendar.jpg',
+                            'src' : 'assets/images/scrumboard/cow2.jpg',
                             'time': 'Added Nov 1 at 12:34PM',
                             'type': 'image'
                         }
@@ -179,11 +182,11 @@ const scrumboardDB = {
                             'time'    : '45 mins. ago'
                         }
                     ],
-                    'due'              : '2017-08-29T10:16:34.000Z'
+                    'due'              : '2020-08-29T10:16:34.000Z'
                 },
                 {
                     'id'               : '5637273da9b93bb84743a0f9',
-                    'name'             : 'Fix splash screen bugs',
+                    'name'             : 'Número Brinco wg5678790',
                     'description'      : '',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -196,11 +199,11 @@ const scrumboardDB = {
                     'subscribed'       : true,
                     'checklists'       : [],
                     'activities'       : [],
-                    'due'              : null
+                    'birth'              : '2020-08-29T10:16:34.000Z'
                 },
                 {
                     'id'               : 'd9005a4b89ed2aadca48a6ad',
-                    'name'             : 'Add alternative authentication pages',
+                    'name'             : 'Número Brinco wg5678767',
                     'description'      : '',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -209,6 +212,9 @@ const scrumboardDB = {
                     'idLabels'         : [
                         '6540635g19ad3s5dc31412b2',
                         '56027e4119ad3a5dc28b36cd'
+                    ],
+                    'idSexs'         : [
+                        '56027e4119ad3a5dc2854667'
                     ],
                     'attachments'      : [],
                     'subscribed'       : false,
@@ -250,12 +256,15 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : '5787b7e4740c57bf0dffd5b6',
-                    'name'             : 'Fix the console',
-                    'description'      : 'We need to fix the console asap!',
+                    'name'             : 'Número Brinco wg5678756',
+                    'description'      : 'Ciclo cria',
                     'idAttachmentCover': '',
                     'idMembers'        : [],
                     'idLabels'         : [
                         '26022e4129ad3a5sc28b36cd'
+                    ],
+                    'idSexs'         : [
+                        '56027e4119ad3a5dc2854667'
                     ],
                     'attachments'      : [],
                     'subscribed'       : true,
@@ -273,7 +282,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : 'f6b9d7a9247e5d794a081927',
-                    'name'             : 'New media player',
+                    'name'             : 'Número Brinco wg567567567',
                     'description'      : '',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -293,7 +302,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : 'acc6.9c673cd2f5e35.521e91d8d5991.4b2a95e0539d1.027930c0743c5.7ad1ea7bea476.e8fbe6347',
-                    'name'             : 'Memory Leak',
+                    'name'             : 'Número Brinco wg56786723',
                     'description'      : '',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -311,7 +320,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : '3279.3d69b40cc0b75.690252b6bea08.1e1789b0b7c2e.2f264b8661ce2.84d5f56910e23.429be5e8a',
-                    'name'             : 'Broken toolbar on profile page',
+                    'name'             : 'Número Brinco wg56786782',
                     'description'      : '',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -336,7 +345,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : 'ba01.8e1a43f92a03a.0022bd5cbb9ba.275c64d911d8c.880e0846a3966.f75ff43e53ad.48ad612e7',
-                    'name'             : 'Button hover style',
+                    'name'             : 'Número Brinco wg567867122',
                     'description'      : 'If there are 3 or more buttons in certain page, weird flashing happens when you hover over the red ones.',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -346,15 +355,16 @@ const scrumboardDB = {
                         '26022e4129ad3a5sc28b36cd',
                         '5640635e19ad3a5dc21416b2'
                     ],
+                    
                     'attachments'      : [],
                     'subscribed'       : true,
                     'checklists'       : [],
                     'activities'       : [],
-                    'due'              : '2017-03-08T09:00:00.000Z'
+                    'due'              : '2020-03-08T09:00:00.000Z'
                 },
                 {
                     'id'               : '80ed.24ad3b18e2668.f28fbbceeeff9.5a834620a42f1.5909be19a2bf2.6c4a54947ce2d.da356b0c1',
-                    'name'             : 'New header designs',
+                    'name'             : 'Número Brinco wg567867789',
                     'description'      : '',
                     'idAttachmentCover': '12027cafbe3b52ecf2ef632c',
                     'idMembers'        : [],
@@ -367,14 +377,14 @@ const scrumboardDB = {
                         {
                             'id'  : '12027cafbe3b52ecf2ef632c',
                             'name': 'header-.jpg',
-                            'src' : 'assets/images/scrumboard/header-1.jpg',
+                            'src' : 'assets/images/scrumboard/cow3.jpg',
                             'time': 'Added Nov 3 at 15:22AM',
                             'type': 'image'
                         },
                         {
                             'id'  : '55027ced1e1a12ecf1fced2a',
                             'name': 'header-2.jpg',
-                            'src' : 'assets/images/scrumboard/header-2.jpg',
+                            'src' : 'assets/images/scrumboard/cow3.jpg',
                             'time': 'Added Nov 1 at 12:34PM',
                             'type': 'image'
                         }
@@ -394,7 +404,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : '0ad2.7862f947bc456.f42b446df54cb.d1dd9e93601a1.9deb1406d1404.0b3c278fc7001.733341b42',
-                    'name'             : 'Fixed footer',
+                    'name'             : 'Número Brinco wg5678674',
                     'description'      : '',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -403,6 +413,9 @@ const scrumboardDB = {
                     ],
                     'idLabels'         : [
                         '6540635g19ad3s5dc31412b2'
+                    ],
+                    'idSexs'         : [
+                        '56027e4119ad3a5dc2854667'
                     ],
                     'attachments'      : [],
                     'subscribed'       : true,
@@ -435,7 +448,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : '44d1.2b51ea6cc2b5d.21f4a3412e857.8ffa2d8b44ad9.ac87215ed53a1.67d4921ad8f8d.9f318bcb2',
-                    'name'             : 'Mail app new layout',
+                    'name'             : 'Número Brinco wg56786745',
                     'description'      : 'Current layout has lots of flaws in mobile. Outlook view should help with that.',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -456,7 +469,7 @@ const scrumboardDB = {
                 },
                 {
                     'id'               : '7987.9740ba532b0d4.f9d12243f7362.507c0738dc561.87fba0a03df6e.75e6508cacf10.7a9835b54',
-                    'name'             : 'API recover and monitoring',
+                    'name'             : 'Número Brinco wg56786776',
                     'description'      : 'We need a service to monitor and recover failed APIs.',
                     'idAttachmentCover': '',
                     'idMembers'        : [
@@ -472,7 +485,7 @@ const scrumboardDB = {
                     'checklists'       : [
                         {
                             'id'        : '6926.2b31d119e4a.889401e0ca7a0.13ad8ce2e569d.976e54e8b5d87.456afccd7e820.d6c77106a',
-                            'name'      : 'API Monitoring',
+                            'name'      : 'Número Brinco wg56786778',
                             'checkItems': [
                                 {
                                     'id'     : 1,
@@ -493,7 +506,7 @@ const scrumboardDB = {
                         },
                         {
                             'id'        : '7c22.5261c7924387f.248e8b1d32205.003f7a9f501d1.1d48dcdbe8b23.8099dcc5f75a7.29a966196',
-                            'name'      : 'API Recovery',
+                            'name'      : 'Número Brinco wg5678656',
                             'checkItems': [
                                 {
                                     'id'     : 1,
@@ -539,33 +552,45 @@ const scrumboardDB = {
                     'avatar': 'assets/images/avatars/Velazquez.jpg'
                 }
             ],
+            'sexs'  : [
+                {
+                    'id'   : '56027e4119ad3a5dc2854667',
+                    'name' : 'Macho',
+                    'class': 'bg-bluetext-white'
+                },
+                {
+                    'id'   : '56027e4119ad3a5dc2546t3',
+                    'name' : 'fêmea',
+                    'class': 'bg-pink text-white'
+                },
+            ],
             'labels'  : [
                 {
                     'id'   : '26022e4129ad3a5sc28b36cd',
-                    'name' : 'High Priority',
+                    'name' : 'Peso muito menor',
                     'class': 'bg-red text-white'
                 },
                 {
                     'id'   : '56027e4119ad3a5dc28b36cd',
-                    'name' : 'Design',
+                    'name' : 'Peso mais baixo',
                     'class': 'bg-orange text-white'
                 },
                 {
                     'id'   : '5640635e19ad3a5dc21416b2',
-                    'name' : 'App',
-                    'class': 'bg-blue text-white'
+                    'name' : 'Peso leve',
+                    'class': 'bg-brown text-white'
                 },
                 {
                     'id'   : '6540635g19ad3s5dc31412b2',
-                    'name' : 'Feature',
+                    'name' : 'Peso apto',
                     'class': 'bg-green text-white'
                 }
             ]
         },
         {
             'id'      : '27cfcbe1',
-            'name'    : 'ACME Backend Application',
-            'uri'     : 'acme-backend-application',
+            'name'    : 'Cassilandia ciclo cria ',
+            'uri'     : 'Cassilandia ciclo cria',
             'settings': {
                 'color'          : 'blue-grey',
                 'subscribed'     : false,
@@ -737,20 +762,40 @@ const scrumboardDB = {
                     'avatar': 'assets/images/avatars/Velazquez.jpg'
                 }
             ],
+            'sexs'  : [
+
+                {
+                    'id'   : '56027e4119ad3a5dc2854663',
+                    'name' : 'Macho',
+                    'class': 'bg-bluetext-white'
+                },
+                {
+                    'id'   : '56027e4119ad3a5dc2546t7',
+                    'name' : 'fêmea',
+                    'class': 'bg-pink text-white'
+                },
+                
+            ],
             'labels'  : [
+
+                {
+                    'id'   : '56027e4119ad3a5dc28b36fg',
+                    'name' : 'Peso muito menor',
+                    'class': 'bg-red text-white'
+                },
                 {
                     'id'   : '56027e4119ad3a5dc28b36cd',
-                    'name' : 'Design',
+                    'name' : 'Peso mais baixo',
                     'class': 'bg-orange text-white'
                 },
                 {
                     'id'   : '5640635e19ad3a5dc21416b2',
-                    'name' : 'App',
+                    'name' : 'Rastreamento',
                     'class': 'bg-blue text-white'
                 },
                 {
                     'id'   : '6540635g19ad3s5dc31412b2',
-                    'name' : 'Feature',
+                    'name' : 'isenta',
                     'class': 'bg-green text-white'
                 }
             ]

@@ -13,7 +13,7 @@ handlers:
   - url: .*
     script: auto
 env_variables:
-  FIREBASE_PROJECT_ID: new-app-252008
+  FIREBASE_PROJECT_ID: kestrelapp-246112
 automatic_scaling:
   min_idle_instances: automatic
   max_idle_instances: automatic

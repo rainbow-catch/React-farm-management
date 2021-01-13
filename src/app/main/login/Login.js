@@ -26,22 +26,27 @@ function Login() {
 
     return (
         <div className={clsx(classes.root, "flex flex-col flex-1 flex-shrink-0 p-24 md:flex-row md:p-0")}>
+                
+           
 
             <div className="flex flex-col flex-grow-0 items-center text-white p-16 text-center md:p-128 md:items-start md:flex-shrink-0 md:flex-1 md:text-left">
-
-                <FuseAnimate animation="transition.expandIn">
-                    <img className="w-128 mb-32" src="assets/images/logos/fuse.svg" alt="logo" />
-                </FuseAnimate>
+            
+            <FuseAnimate animation="transition.expandIn">
+                    <img className="w-128 mb-32" src="assets/images/logos/KOSMO_SAT3.svg" alt="logo" />
+            </FuseAnimate>
+                
+               
 
                 <FuseAnimate animation="transition.slideUpIn" delay={300}>
                     <Typography variant="h3" color="inherit" className="font-light">
-                        Bienvenido Kestrel Data!
+                        Bem-vindo KOSMO-SAT!
                     </Typography>
                 </FuseAnimate>
 
                 <FuseAnimate delay={400}>
                     <Typography variant="subtitle1" color="inherit" className="max-w-512 mt-16">
-                        Cambiar el mundo amigo Sancho, no es locura ni utopía, es justicia...
+                        
+                        Mudar o mundo, amigo Sancho, não é loucura ou utopia, é justiça ...
                     </Typography>
                 </FuseAnimate>
             </div>
@@ -52,7 +57,17 @@ function Login() {
 
                     <CardContent className="flex flex-col items-center justify-center p-32 md:p-48 md:pt-128 ">
 
-                        <Typography variant="h6" className="text-center md:w-full mb-48">Introduce tu cuenta</Typography>
+                    <div class="logo">
+                            <img
+                                src="assets/images/logos/KOSMO_SAT2.svg"
+                                
+                                style={{
+                                    maxWidth: '640px',
+                                    width   : '100%'
+                                }}
+                            />
+                            
+                        </div>
 
                         <Tabs
                             value={selectedTab}
@@ -82,8 +97,8 @@ function Login() {
                         {selectedTab === 2 && <FirebaseLoginTab />}
 
                         <div className="flex flex-col items-center justify-center pt-32">
-                            <span className="font-medium">¿No tienes Cuenta?</span>
-                            <span className="font-medium">Contacta con tu proveedor!</span>
+                            <span className="font-medium">Você não possui uma conta?</span>
+                            <span className="font-medium">Entre em contato com seu provedor!</span>
                             
                             
                         </div>

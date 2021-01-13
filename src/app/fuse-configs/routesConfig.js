@@ -29,11 +29,11 @@ const routes = [
     //if you want to make whole app auth protected by default change defaultAuth for example:
     // ...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin','staff','user']),
     // The individual route configs which has auth option won't be overridden.
-    ...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin', 'staff', 'user1', 'user2', 'user']),
+    ...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin', 'staff', 'user1', 'user2','USP1','citrus', 'user','vissolela1','satfazendas1','soya1','soya2','pasto1','nematodos1']),
     {
         path: '/',
         exact: true,
-        component: () => <Redirect to="/apps/dashboards/analytics" />
+        component: () => <Redirect to="/apps/dashboards/home" />
     },
     {
         component: () => <Redirect to="/pages/errors/error-404" />

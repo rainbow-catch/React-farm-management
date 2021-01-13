@@ -21,7 +21,7 @@ function DueMenu(props)
     return (
         <div>
             <IconButton color="inherit" onClick={handleMenuOpen}>
-                <Icon>today</Icon>
+                <Icon>card_giftcard</Icon>
             </IconButton>
             <ToolbarMenu state={anchorEl} onClose={handleMenuClose}>
                 {props.due ? (

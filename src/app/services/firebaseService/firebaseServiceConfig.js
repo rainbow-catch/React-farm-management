@@ -1,25 +1,25 @@
 const prodConfig = {
     
-    apiKey: "AIzaSyCIHc0iqU4hMJP7dBI10ZbhfMIo_96HFuw",
-    authDomain: "new-app-252008.firebaseapp.com",
-    databaseURL: "https://new-app-252008.firebaseio.com",
-    projectId: "new-app-252008",
-    storageBucket: "new-app-252008.appspot.com",
-    messagingSenderId: "826379870056",
-    appId: "1:826379870056:web:d1f660c45e21e3d39f80dd",
-    measurementId: "G-1L1L2YTYWX"
+    apiKey: "AIzaSyBP93nJqKG6eafyVCfpX-3GnVcyg6fYuf0",
+    authDomain: "kestrelapp-246112.firebaseapp.com",
+    databaseURL: "https://kestrelapp-246112-default-rtdb.firebaseio.com/",
+    projectId: "kestrelapp-246112",
+    storageBucket: "kestrelapp-246112.appspot.com",
+    messagingSenderId: "267089332940",
+    appId: "1:267089332940:web:95b945b9c7fe0f0964d069",
+    measurementId: "G-6GDZ94ZVL5"
 };
 
 const devConfig = {
 
-    apiKey: "AIzaSyCIHc0iqU4hMJP7dBI10ZbhfMIo_96HFuw",
-    authDomain: "new-app-252008.firebaseapp.com",
-    databaseURL: "https://new-app-252008.firebaseio.com",
-    projectId: "new-app-252008",
-    storageBucket: "new-app-252008.appspot.com",
-    messagingSenderId: "826379870056",
-    appId: "1:826379870056:web:d1f660c45e21e3d39f80dd",
-    measurementId: "G-1L1L2YTYWX"
+    apiKey: "AIzaSyBP93nJqKG6eafyVCfpX-3GnVcyg6fYuf0",
+    authDomain: "kestrelapp-246112.firebaseapp.com",
+    databaseURL: "https://kestrelapp-246112-default-rtdb.firebaseio.com/",
+    projectId: "kestrelapp-246112",
+    storageBucket: "kestrelapp-246112.appspot.com",
+    messagingSenderId: "267089332940",
+    appId: "1:267089332940:web:95b945b9c7fe0f0964d069",
+    measurementId: "G-6GDZ94ZVL5"
 };
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;

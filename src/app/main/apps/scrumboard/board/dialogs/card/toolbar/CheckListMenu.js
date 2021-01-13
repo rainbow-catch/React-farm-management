@@ -47,12 +47,12 @@ function CheckListMenu(props)
     return (
         <div>
             <IconButton color="inherit" onClick={handleMenuOpen}>
-                <Icon>check_box</Icon>
+                <Icon>fitness_center</Icon>
             </IconButton>
             <ToolbarMenu state={anchorEl} onClose={handleMenuClose}>
                 <form onSubmit={handleSubmit} className="p-16 flex flex-col items-end">
                     <TextField
-                        label="Checklist title"
+                        label="Insira ciclo"
                         name="name"
                         value={form.name}
                         onChange={handleChange}

@@ -1,5 +1,6 @@
 import {AnalyticsDashboardAppConfig} from './dashboards/analytics/AnalyticsDashboardAppConfig';
 import {ProjectDashboardAppConfig} from './dashboards/project/ProjectDashboardAppConfig';
+import {HomeDashboardAppConfig} from './dashboards/home/HomeDashboardAppConfig';
 import {MailAppConfig} from './mail/MailAppConfig';
 import {TodoAppConfig} from './todo/TodoAppConfig';
 import {ContactsAppConfig} from './contacts/ContactsAppConfig';
@@ -14,6 +15,7 @@ import {NotesAppConfig} from './notes/NotesAppConfig';
 export const appsConfigs = [
     AnalyticsDashboardAppConfig,
     ProjectDashboardAppConfig,
+    HomeDashboardAppConfig,
     MailAppConfig,
     TodoAppConfig,
     FileManagerAppConfig,

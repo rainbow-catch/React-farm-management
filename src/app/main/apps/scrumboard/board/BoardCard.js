@@ -68,7 +68,9 @@ function BoardCard(props)
                         )}
 
                         <div className="p-16 pb-0">
+                            
 
+                            
                             {card.idLabels.length > 0 && (
                                 <div className="flex flex-wrap mb-8">
                                     {card.idLabels.map(id => {
@@ -83,6 +85,7 @@ function BoardCard(props)
                             )}
 
                             <Typography className="font-600 mb-12">{card.name}</Typography>
+
 
                             {(card.due || checkItems > 0) && (
                                 <div className="flex items-center mb-12">
