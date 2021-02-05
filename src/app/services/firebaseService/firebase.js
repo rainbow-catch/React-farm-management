@@ -2,6 +2,12 @@ import firebase from 'firebase/app';
 import config from './firebaseServiceConfig';
 import 'firebase/firestore'
 
-const fb = firebase.initializeApp(config)
- export const db = fb.firestore()
+let fb = null;
+if (!firebase.apps.length) {
+    fb = firebase.initializeApp(config)
+} else {
+    fb = firebase.app(); // if already initialized, use that one
+}
+
+export const db = fb.firestore()
  

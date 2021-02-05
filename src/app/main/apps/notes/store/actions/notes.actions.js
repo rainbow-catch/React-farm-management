@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {db} from 'app/services/firebaseService/firebase'
 export const GET_NOTES = '[NOTES APP] GET NOTES';
 export const SET_SEARCH_TEXT = '[NOTES APP] SET SEARCH TEXT';
 export const OPEN_NOTE_DIALOG = '[NOTES APP] OPEN NOTE DIALOG';
@@ -11,15 +11,18 @@ export const TOGGLE_VARIATE_DESC_SIZE = '[NOTES APP] TOGGLE VARIATE DESC SIZE';
 
 export function getNotes()
 {
+    // const request = db.collection("notes").get()
     const request = axios.get('/api/notes-app/notes');
 
     return (dispatch) =>
-        request.then((response) =>
+        request.then((response) => {
+            console.log("response is ", response)
             dispatch({
                 type   : GET_NOTES,
                 payload: response.data
             })
-        );
+        })
+        .catch(error => console.log("failed error is ", error));
 }
 
 export function setSearchText(event)
@@ -65,14 +68,21 @@ export function createNote(note)
     const request = axios.post('/api/notes-app/create-note', {
         note
     });
-    return (dispatch) =>
+    // console.log('create action start notes is ', note)
+    // const request = db.collection("notes").add(note);
+    // console.log('create action request sent')
+
+    return (dispatch) => {
+        console.log('inside dispatch')
         request.then((response) => {
-                dispatch({
-                    type: CREATE_NOTE,
-                    note: response.data
-                })
-            }
-        );
+            console.log('response is ', response)
+            dispatch({
+                type: CREATE_NOTE,
+                note: response.data
+            })
+        })
+        .catch(error => console.log('failed error is', error));
+    }
 }
 
 export function updateNote(note)
