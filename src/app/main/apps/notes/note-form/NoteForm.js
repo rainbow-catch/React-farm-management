@@ -12,9 +12,11 @@ import NoteFormList from './checklist/NoteFormList';
 import NoteFormReminder from './NoteFormReminder';
 import NoteFormUploadImage from './NoteFormUploadImage';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
+import NoteFormFarm from './NoteFormFarm';
 
 function NoteForm(props) {
     const [showList, setShowList] = useState(false);
+    const [showFarmInput, setShowFarmInput] = useState(false);
     const { form: noteForm, handleChange, setForm } = useForm(
         _.merge(
             {},
@@ -42,12 +44,21 @@ function NoteForm(props) {
         setShowList(!showList);
     }
 
+    function handleToggleFarmInput() {
+        setShowFarmInput(!showFarmInput);
+    }
+
     function handleDateChange(date) {
         setForm(_.setIn(noteForm, "reminder", date));
     }
 
     function handleChecklistChange(checklist) {
         setForm(_.setIn(noteForm, `checklist`, checklist));
+    }
+
+    function handleFarmDataChange(farmData) {
+        setForm(_.setIn(noteForm, `farmData`, farmData));
+        handleToggleFarmInput();
     }
 
     function handleRemoveLabel(id) {
@@ -146,6 +157,19 @@ function NoteForm(props) {
                         </div>
                     )}
 
+                    { noteForm.farmData && !showFarmInput && (
+                        <div className="px-16">
+                            {Object.entries(noteForm.farmData).map( ([key, value]) => (
+                                <div>{key} : {value.toString()}</div>
+                            ))}
+                        </div>
+                    )}
+                    { showFarmInput && (
+                        <div className="px-16">
+                            <NoteFormFarm className="" farmData={noteForm.farmData} onFarmDataChange={handleFarmDataChange} toggleInput={handleToggleFarmInput} />
+                        </div>
+                    )}
+
                     {(noteForm.labels || noteForm.reminder || noteForm.time) && (
                         <div className="flex flex-wrap w-full p-16 pb-12">
                             {noteForm.reminder && (
@@ -199,6 +223,12 @@ function NoteForm(props) {
                                 </Icon>
                             </IconButton>
                         </div>
+                    </Tooltip>
+
+                    <Tooltip title="More" placement="bottom">
+                        <IconButton className="w-32 h-32 mx-4 p-0" onClick={handleToggleFarmInput}>
+                            <Icon fontSize="small">more</Icon>
+                        </IconButton>
                     </Tooltip>
                 </div>
                 <div className="flex items-center px-4">
