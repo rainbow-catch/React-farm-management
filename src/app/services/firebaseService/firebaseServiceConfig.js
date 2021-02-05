@@ -20,6 +20,7 @@ const devConfig = {
     messagingSenderId: "267089332940",
     appId: "1:267089332940:web:95b945b9c7fe0f0964d069",
     measurementId: "G-6GDZ94ZVL5"
+
 };
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;

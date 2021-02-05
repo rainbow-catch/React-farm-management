@@ -11,7 +11,7 @@ import React from 'react';
   //  );
 //}
 
-function Widget6(props)
+function Widget4(props)
 {
     return (
         <div className="video" 
@@ -37,8 +37,8 @@ function Widget6(props)
                                     //clip: "10"
                                 }}
 
-                                    src={"https://ipavonfidesterra.users.earthengine.app/view/brasilnematodosalertasmeteorologicas2"}
-                                    
+                                   // src={"https://datastudio.google.com/embed/reporting/fcc4e838-b2f0-4705-a096-9dbd7c7bbcd1/page/ETtzB"}
+                                   src={"http://localhost:3000"}
                                 
                             />
                         
@@ -49,4 +49,4 @@ function Widget6(props)
     );
 }
 
-export default Widget6;
+export default Widget4;

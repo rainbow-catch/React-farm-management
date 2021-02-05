@@ -1,5 +1,6 @@
 import mock from './../mock';
 import _ from '@lodash';
+import firebaseService from 'app/services/firebaseService';
 
 const scrumboardDB = {
     boards: [

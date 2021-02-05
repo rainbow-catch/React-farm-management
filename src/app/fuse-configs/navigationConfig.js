@@ -4,63 +4,29 @@ import { authRoles } from 'app/auth';
 const navigationConfig = [
     {
         'id': 'applications',
-        'title': 'Aplicações',
+        'title': 'Refresh Iframe',
         'auth': authRoles.admin,
         'type': 'group',
         'icon': 'apps',
         'children': [
-            {
-                'id': 'dashboards',
-                'title': 'Dashboards',
-                'type': 'collapse',
-                'icon': 'dashboard',
-                'children': [
-                    {
-                        'id': 'analytics-dashboard',
-                        'title': 'Análise',
-                        'type': 'item',
-                        'url': '/apps/dashboards/analytics'
-                    }
-                    
-                ]
-            },
-            {
-                'id': 'calendar',
-                'title': 'Calendário',
-                'type': 'item',
-                'icon': 'today',
-                'url': '/apps/calendar'
-            },
             
             {
-                'id': 'academy',
-                'title': 'Academia',
+                'id': 'REFRESH IFRAME ',
+                'title': '3 OPTIONS ',
                 'type': 'item',
-                'icon': 'school',
-                'url': '/apps/academy'
-            },
-
-            {
-                'id': 'file-manager',
-                'title': 'Arquivos Blockchain',
-                'type': 'item',
-                'icon': 'folder',
-                'url': '/apps/file-manager'
+                'icon': 'today',
+                'url': '/apps/dashboards/refresh'
             },
             {
-                'id': 'contacts',
-                'title': 'Contatos',
+                'id': 'Notes ',
+                'title': 'NOTE',
                 'type': 'item',
-                'icon': 'account_box',
-                'url': '/apps/contacts/all'
+                'icon': 'today',
+                'url': '/apps/notes'
             },
-            {
-                'id': 'scrum',
-                'title': 'scrumboard',
-                'type': 'item',
-                'icon': 'developer_board',
-                'url': '/apps/scrumboard'
-            }
+            
+            
+            
         ]
     },
 

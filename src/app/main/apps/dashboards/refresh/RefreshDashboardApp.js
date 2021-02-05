@@ -1,27 +1,46 @@
-import React, { useEffect } from 'react';
-import { Typography } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Typography, Button } from '@material-ui/core';
 import { FuseAnimate } from '@fuse';
 import { useDispatch, useSelector } from 'react-redux';
-import Widget1 from './widgets/Widget1';
-//import Widget2 from './widgets/Widget2';
 import Widget3 from './widgets/Widget3';
 import Widget4 from './widgets/Widget4';
-//import Widget5 from './widgets/Widget5';
 import Widget6 from './widgets/Widget6';
 import Widget7 from './widgets/Widget7';
 import Widget8 from './widgets/Widget8';
-//import Widget9 from './widgets/Widget9';
 import withReducer from 'app/store/withReducer';
 import * as Actions from './store/actions'
 import reducer from './store/reducers';
 
-function Nematodos1DashboardApp() {
+function RefreshDashboardApp() {
     const dispatch = useDispatch();
-    const widgets = useSelector(({ nematodos1DashboardApp }) => nematodos1DashboardApp.widgets.data);
+    const widgets = useSelector(({ refreshDashboardApp }) => refreshDashboardApp.widgets.data);
+    const timerRef = React.useRef();
+
+    useEffect(
+        () => () => {
+          clearTimeout(timerRef.current);
+        },
+        [],
+    );
 
     useEffect(() => {
         dispatch(Actions.getWidgets());
     }, [dispatch]);
+
+    const [keyForWidget3, setKeyForWidget3] = useState(0);
+    const [keyForWidget4, setKeyForWidget4] = useState(10000);
+    const [keyForWidget6, setKeyForWidget6] = useState(20000);
+
+    const handleRefresh = () =>{
+        setKeyForWidget3(keyForWidget3 + 1);
+        setKeyForWidget6(keyForWidget6 + 1);
+    }
+
+    
+    timerRef.current = setTimeout(() => {
+        setKeyForWidget6(keyForWidget6 + 1);
+        setKeyForWidget4(keyForWidget4 + 1);
+    }, 15000);
 
     if (!widgets) {
         return null;
@@ -30,7 +49,7 @@ function Nematodos1DashboardApp() {
 
         <div className="w-full">
 
-            <Widget1 data={widgets.widget1} />
+            
 
             <FuseAnimate animation="transition.slideUpIn" delay={200}>
 
@@ -39,36 +58,36 @@ function Nematodos1DashboardApp() {
                     <div className="flex flex-1 flex-col min-w-0">
 
                                                 
-                 
-
                         <FuseAnimate delay={600}>
                             <Typography className="px-16 pb-8 text-18 font-300">
-                                ALERTA VENTO
+                                Refresh button
                             </Typography>
                         </FuseAnimate>
-
-                        <div className="widget w-full p-16 pb-32">
-                            <Widget6 data={widgets.widget6} />
+                        <Button id="Refresh" className="w-320" onClick={handleRefresh}>
+                            Refresh
+                        </Button>
+                        <div className="widget w-full h-100 p-16 pb-32">
+                            <Widget6 key={keyForWidget6} data={widgets.widget6} />
                         </div>
 
                         <FuseAnimate delay={600}>
                             <Typography className="px-16 pb-8 text-18 font-300">
-                                ALERTA TEMPERATURA
+                                Refresh 15 minute
                             </Typography>
                         </FuseAnimate>
 
-                        <div className="widget w-full p-16 pb-32">
-                            <Widget3 data={widgets.widget6} />
+                        <div className="widget w-full h-100 p-16 pb-32">
+                            <Widget3 key={keyForWidget3} data={widgets.widget6} />
                         </div>
 
                         <FuseAnimate delay={600}>
                             <Typography className="px-16 pb-8 text-18 font-300">
-                            Mapa - VIGOR - NITROGÊNIO - ESTRESSE DA ÁGUA
+                            Refresh together
                             </Typography>
                         </FuseAnimate>
 
-                        <div className="widget w-full p-16 pb-32">
-                            <Widget4 data={widgets.widget6} />
+                        <div className="widget w-full h-100 p-16 pb-32">
+                            <Widget4 key={keyForWidget4} data={widgets.widget6} />
                         </div>
                     </div>
             
@@ -108,4 +127,4 @@ function Nematodos1DashboardApp() {
     )
 }
 
-export default withReducer('nematodos1DashboardApp', reducer)(Nematodos1DashboardApp);
+export default withReducer('refreshDashboardApp', reducer)(RefreshDashboardApp);

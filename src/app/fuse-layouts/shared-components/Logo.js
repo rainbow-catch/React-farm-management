@@ -30,7 +30,7 @@ function Logo() {
     const classes = useStyles();
 
     return (
-        <div class="logo">
+        <div className="logo">
                             <img
                                 src="assets/images/logos/KOSMO_SAT_BL5.svg"
                                 

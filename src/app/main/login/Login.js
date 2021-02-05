@@ -57,7 +57,7 @@ function Login() {
 
                     <CardContent className="flex flex-col items-center justify-center p-32 md:p-48 md:pt-128 ">
 
-                    <div class="logo">
+                    <div className="logo">
                             <img
                                 src="assets/images/logos/KOSMO_SAT2.svg"
                                 
