@@ -166,7 +166,7 @@ function NoteForm(props) {
                     )}
                     { showFarmInput && (
                         <div className="px-16">
-                            <NoteFormFarm className="" farmData={noteForm.farmData} onFarmDataChange={handleFarmDataChange} toggleInput={handleToggleFarmInput} />
+                            <NoteFormFarm className="bg-gray-200 p-3 border border-gray-900 rounded" farmData={noteForm.farmData} onFarmDataChange={handleFarmDataChange} toggleInput={handleToggleFarmInput} />
                         </div>
                     )}
 
