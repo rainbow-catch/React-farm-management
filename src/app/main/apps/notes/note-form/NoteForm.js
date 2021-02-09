@@ -109,88 +109,105 @@ function NoteForm(props) {
     }
     const google = window.google
     console.log(google)
-
-    // const getPaths = (polygon) => {
-
-    //     var polygonBounds = polygon.getPath();
-    //     var bounds = [];
-    //     for (var i = 0; i < polygonBounds.length; i++) {
-    //         var point = {
-    //             lat: polygonBounds.getAt(i).lat(),
-    //             lng: polygonBounds.getAt(i).lng()
-    //         };
-    //         bounds.push(point);
-    //     }
-    //     console.log(bounds);
-    // }
-    // const polygonPath = [
-    //     [-27.374244, -51.594844],
-    //     [-27.375959, -51.593041],
-    //     [-27.374892, -51.591496],
-    //     [-27.375807, -51.589909],
-    //     [-27.377598, -51.590595],
-    //     [-27.376988, -51.593342],
-    //     [-27.378665, -51.593771],
-    //     [-27.379237, -51.591067],
-    //     [-27.380875, -51.591454],
-    //     [-27.380609, -51.59287],
-    //     [-27.38198, -51.59317],
-    //     [-27.381447, -51.59523],
-    //     [-27.380189, -51.59493],
-    //     [-27.380151, -51.595616],
-    //     [-27.376836, -51.594758],
-    //     [-27.376569, -51.595531]
-    //   ];
+    
+    const polygonPath = [
+        [-27.374244, -51.594844],
+        [-27.375959, -51.593041],
+        [-27.374892, -51.591496],
+        [-27.375807, -51.589909],
+        [-27.377598, -51.590595],
+        [-27.376988, -51.593342],
+        [-27.378665, -51.593771],
+        [-27.379237, -51.591067],
+        [-27.380875, -51.591454],
+        [-27.380609, -51.59287],
+        [-27.38198, -51.59317],
+        [-27.381447, -51.59523],
+        [-27.380189, -51.59493],
+        [-27.380151, -51.595616],
+        [-27.376836, -51.594758],
+        [-27.376569, -51.595531]
+    ];
     const handleGoogleMapApi = (google) => {
         const map = google.map
-    //     var bounds = new google.maps.LatLngBounds();
-    //     var myCountyCoords = [];
-    //     for (var i = 0; i < polygonPath.length; i++) {
-    //         var pt = new google.maps.LatLng(polygonPath[i][0], polygonPath[i][1]);
-    //         myCountyCoords.push(pt);
-    //         bounds.extend(pt)
-    //     }
-    //     map.fitBounds(bounds);
-    //     var myCounty = new google.maps.Polygon({
-    //         paths: myCountyCoords,
-    //         strokeColor: '#FF0000',
-    //         strokeOpacity: 0.8,
-    //         strokeWeight: 2,
-    //         fillColor: '#FF0000',
-    //         fillOpacity: 0.35,
-    //         map: map
-    //     });
-    //     myCounty.setMap(map);
-    //     var overlay = {
-    //         overlay: myCounty,
-    //         type: google.maps.drawing.OverlayType.POLYGON
-    //     };
-    //     maps.overlays.push(overlay);
+        var bounds = new google.maps.LatLngBounds();
+        var myCountyCoords = [];
+        for (var i = 0; i < polygonPath.length; i++) {
+            var pt = new google.maps.LatLng(polygonPath[i][0], polygonPath[i][1]);
+            myCountyCoords.push(pt);
+            bounds.extend(pt)
+        }
+        map.fitBounds(bounds);
+
+        var field = new google.maps.Polygon({
+            paths: [myCountyCoords],
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            editable: true
+        });
         const drawingManager = new google.maps.drawing.DrawingManager({
-            drawingMode: google.maps.drawing.OverlayType.MARKER,
+            drawingMode: google.maps.drawing.OverlayType.POLYGON,
             drawingControl: true,
             drawingControlOptions: {
                 position: google.maps.ControlPosition.TOP_CENTER,
                 drawingModes: [
-                    google.maps.drawing.OverlayType.MARKER,
-                    google.maps.drawing.OverlayType.CIRCLE,
+                    // google.maps.drawing.OverlayType.MARKER,
+                    // google.maps.drawing.OverlayType.CIRCLE,
                     google.maps.drawing.OverlayType.POLYGON,
-                    google.maps.drawing.OverlayType.POLYLINE,
-                    google.maps.drawing.OverlayType.RECTANGLE
+                    // google.maps.drawing.OverlayType.POLYLINE,
+                    // google.maps.drawing.OverlayType.RECTANGLE
                 ]
             },
             //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
             polygonOptions: {
-                fillColor: '#ffff00',
-                fillOpacity: 0.3,
-                strokeWeight: 5,
-                clickable: false,
-                editable: true,
-                zIndex: 1
-            },
-            // onPolygonComplete: value => console.log(getPaths(value))
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map: map,
+                editable: true
+            }
         });
+
         drawingManager.setMap(map);
+
+        google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
+            getPolygonData(polygon)
+        });
+
+        const getPolygonData = (polygon) => {
+            drawingManager.setOptions({
+                drawingMode: null,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER,
+                    drawingModes: []
+                }
+            });
+            field.setPath(polygon.getPath().getArray());
+            polygon.setMap(null);
+            polygon = null;
+            field.setMap(map);
+            google.maps.event.addListener(field.getPath(), 'set_at', function (index, obj) {
+                // changed point, via map
+                console.log(field.getPath());
+                console.log("a point has changed");
+            });
+            google.maps.event.addListener(field.getPath(), 'insert_at', function (index, obj) {
+                // new point via map
+                console.log(field.getPath());
+                console.log("a point has been added");
+            });
+            google.maps.event.addListener(field.getPath(), "remove_at", function (index, obj) {
+                //removed point, via map
+                console.log(field.getPath());
+                console.log("a point has been removed");
+            });
+        }
     }
     return (
         <div className="flex flex-col w-full">
