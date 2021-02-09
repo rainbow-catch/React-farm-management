@@ -11,7 +11,9 @@ import NoteLabel from './NoteLabel';
 function NoteListItem(props)
 {
     const dispatch = useDispatch();
-
+    const checklist = props.note.checklist?? [];
+    const labels = props.note.labels?? [];
+    const reminder = props.note.reminder?? null;
     return (
         <FuseAnimate animation="transition.fadeIn" duration={400} delay={100}>
             <Card className={clsx("cursor-pointer", props.className)} onClick={() => dispatch(Actions.openNoteDialog(props.note.id))}>
@@ -40,9 +42,9 @@ function NoteListItem(props)
                     </Typography>
                 )}
 
-                {props.note.checklist && props.note.checklist.length > 0 && (
+                {checklist != undefined? (checklist.length > 0 && (
                     <ul className="py-8 px-16 flex flex-wrap list-reset">
-                        {props.note.checklist.map(item => (
+                        {checklist.map(item => (
                             <li key={item.id} className="flex items-center w-full">
                                 <Icon color="action" className="mr-8 text-16">{item.checked ? "check_box_outline" : "check_box_outline_blank"}</Icon>
                                 <Typography
@@ -54,14 +56,14 @@ function NoteListItem(props)
                             </li>
                         ))}
                     </ul>
-                )}
+                )): ''}
 
-                {(props.note.labels.length > 0 || props.note.reminder) && (
+                {(labels.length > 0 || reminder) && (
                     <div className="py-8 px-16 flex flex-wrap w-full">
-                        {props.note.reminder && (
-                            <NoteReminderLabel className="mt-4 mr-4" date={props.note.reminder}/>
+                        {reminder && (
+                            <NoteReminderLabel className="mt-4 mr-4" date={reminder}/>
                         )}
-                        {props.note.labels.map(id => (
+                        {labels.map(id => (
                             <NoteLabel id={id} key={id} className="mt-4 mr-4" linkable/>
                         ))}
                     </div>

@@ -9,5 +9,5 @@ if (!firebase.apps.length) {
     fb = firebase.app(); // if already initialized, use that one
 }
 
-export const db = fb.firestore()
+export const db = fb.database()
  

@@ -38,7 +38,7 @@ function NoteDialog(props)
             open={Boolean(notes.noteDialogId)}
         >
             <NoteForm
-                note={notes.entities[notes.noteDialogId]}
+                note={{...notes.entities[notes.noteDialogId], id: notes.noteDialogId}}
                 onChange={handleOnChange}
                 onClose={ev => dispatch(Actions.closeNoteDialog())}
                 onRemove={handleOnRemove}

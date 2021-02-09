@@ -20,7 +20,7 @@ function NoteList(props)
             const {params} = props.match;
             const {id, labelId} = params;
 
-            let data = Object.keys(notes).map((id) => notes[id]);
+            let data = Object.keys(notes).map((id) => {return { id: id, ...notes[id]}});
 
             if ( labelId )
             {

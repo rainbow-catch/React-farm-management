@@ -4,7 +4,6 @@ function NoteModel(data)
 {
     const item = data ? data : {};
     return {
-        id         : item.id || FuseUtils.generateGUID(),
         title      : item.title || '',
         description: item.description || '',
         archive    : item.archive || false,
@@ -14,19 +13,21 @@ function NoteModel(data)
         checklist  : item.checklist || [],
         labels     : item.labels || [],
         //extra data
+        /* 
         farmData   : item.farmData || null
-        // farm        : item.farm || '',
-        // lot         : item.lot || '',
-        // section     : item.section || '',
+        farm        : item.farm || '',
+        lot         : item.lot || '',
+        section     : item.section || '',
         
-        // culture     : item.culture || '', // enum : maize, vineyard, citrus
-        // variety     : item.variety || '',
-        // graft       : item.graft || '',
-        // plantingDate: item.plantingDate || '', //date
+        culture     : item.culture || '', // enum : maize, vineyard, citrus
+        variety     : item.variety || '',
+        graft       : item.graft || '',
+        plantingDate: item.plantingDate || '', //date
 
-        // irrigation      : item.irrigation || '', //enum : aspersion, dropper
-        // irrigationType  : item.irrigationType || '',
-        // issuers         : item.issuers || '', //number
+        irrigation      : item.irrigation || '', //enum : aspersion, dropper
+        irrigationType  : item.irrigationType || '',
+        issuers         : item.issuers || '', //number
+        */
     }
 }
 
