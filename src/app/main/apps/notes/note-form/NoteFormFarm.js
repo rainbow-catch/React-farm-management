@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Button, Select, TextField } from '@material-ui/core';
 import { isEmpty } from 'lodash';
-import Autocomplete from './Autocomplete';
 
 
 function NoteFormFarm(props) {

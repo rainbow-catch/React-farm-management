@@ -13,6 +13,8 @@ import NoteFormReminder from './NoteFormReminder';
 import NoteFormUploadImage from './NoteFormUploadImage';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormFarm from './NoteFormFarm';
+import GoogleMap from 'google-map-react';
+// import { DrawingManager } from "react-google-maps/lib/components/drawing/DrawingManager";
 
 function NoteForm(props) {
     const [showList, setShowList] = useState(false);
@@ -105,7 +107,50 @@ function NoteForm(props) {
     if (!noteForm) {
         return null;
     }
+    const google=window.google
+    console.log(google)
 
+    const getPaths = (polygon) => {
+
+        var polygonBounds = polygon.getPath();
+        var bounds = [];
+        for (var i = 0; i < polygonBounds.length; i++) {
+          var point = {
+            lat: polygonBounds.getAt(i).lat(),
+            lng: polygonBounds.getAt(i).lng()
+          };
+          bounds.push(point);
+        }
+        console.log(bounds);
+      }
+    const handleGoogleMapApi = (google) => {
+        const map = google.map
+        const drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: [
+              google.maps.drawing.OverlayType.MARKER,
+              google.maps.drawing.OverlayType.CIRCLE,
+              google.maps.drawing.OverlayType.POLYGON,
+              google.maps.drawing.OverlayType.POLYLINE,
+              google.maps.drawing.OverlayType.RECTANGLE
+            ]
+          },
+        //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+          polygonOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 0.3,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          },
+          onPolygonComplete: value => console.log(getPaths(value))
+        });
+        drawingManager.setMap(map);
+      }
     return (
         <div className="flex flex-col w-full">
             <FuseScrollbars className="flex flex-auto w-full max-h-640">
@@ -157,19 +202,31 @@ function NoteForm(props) {
                         </div>
                     )}
 
-                    { noteForm.farmData && !showFarmInput && (
+                    {noteForm.farmData && !showFarmInput && (
                         <div className="px-16">
-                            {Object.entries(noteForm.farmData).map( ([key, value]) => (
+                            {Object.entries(noteForm.farmData).map(([key, value]) => (
                                 <div>{key} : {value.toString()}</div>
                             ))}
                         </div>
                     )}
-                    { showFarmInput && (
+                    {showFarmInput && (
                         <div className="px-16">
                             <NoteFormFarm className="bg-gray-200 p-3 border border-gray-900 rounded" farmData={noteForm.farmData} onFarmDataChange={handleFarmDataChange} toggleInput={handleToggleFarmInput} />
                         </div>
                     )}
-
+                    <div className="w-full h-320 pt-10">
+                        <GoogleMap
+                            bootstrapURLKeys={{
+                                key: process.env.REACT_APP_MAP_KEY
+                            }}
+                            defaultZoom={5}
+                            defaultCenter={[24.886, -70.268]}
+                            options={{ scrollwheel: false, scaleControl: true }}
+                            onGoogleApiLoaded={handleGoogleMapApi}
+                        >
+                            
+                        </GoogleMap>
+                    </div>
                     {(noteForm.labels || noteForm.reminder || noteForm.time) && (
                         <div className="flex flex-wrap w-full p-16 pb-12">
                             {noteForm.reminder && (
