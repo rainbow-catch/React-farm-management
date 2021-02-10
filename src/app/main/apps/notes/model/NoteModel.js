@@ -12,6 +12,7 @@ function NoteModel(data)
         reminder   : item.reminder || null,
         checklist  : item.checklist || [],
         labels     : item.labels || [],
+        polygon    : item.polygon || []
         //extra data
         /* 
         farmData   : item.farmData || null

@@ -65,7 +65,7 @@ const notesReducer = function (state = initialState, action) {
         {
             return {
                 ...state,
-                entities: _.cloneDeep(_.set(state.entities, action.note.id, action.note))
+                // entities: _.cloneDeep(_.set(state.entities, action.note.id, action.note))
             };
         }
         default:

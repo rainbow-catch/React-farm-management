@@ -14,7 +14,6 @@ import NoteFormUploadImage from './NoteFormUploadImage';
 import NoteFormLabelMenu from './NoteFormLabelMenu';
 import NoteFormFarm from './NoteFormFarm';
 import GoogleMap from 'google-map-react';
-// import { DrawingManager } from "react-google-maps/lib/components/drawing/DrawingManager";
 
 function NoteForm(props) {
     const [showList, setShowList] = useState(false);
@@ -28,9 +27,9 @@ function NoteForm(props) {
             props.match.params.id === "archive" ? { archive: true } : null
         ));
     const { onChange } = props;
-
     useUpdateEffect(() => {
         if (noteForm && onChange) {
+            console.log("form data to be updated ",noteForm.polygon)
             onChange(noteForm);
         }
     }, [noteForm, onChange]);
@@ -63,6 +62,10 @@ function NoteForm(props) {
         handleToggleFarmInput();
     }
 
+    function handlePolygonChange(polygon) {
+        console.log('updated polygon is ', polygon)
+        setForm(_.setIn(noteForm, `polygon`, polygon));
+    }
     function handleRemoveLabel(id) {
         setForm(_.setIn(noteForm, `labels`, noteForm.labels.filter(_id => _id !== id)));
     }
@@ -107,40 +110,36 @@ function NoteForm(props) {
     if (!noteForm) {
         return null;
     }
-    const google = window.google
-    console.log(google)
-    
-    const polygonPath = [
-        [-27.374244, -51.594844],
-        [-27.375959, -51.593041],
-        [-27.374892, -51.591496],
-        [-27.375807, -51.589909],
-        [-27.377598, -51.590595],
-        [-27.376988, -51.593342],
-        [-27.378665, -51.593771],
-        [-27.379237, -51.591067],
-        [-27.380875, -51.591454],
-        [-27.380609, -51.59287],
-        [-27.38198, -51.59317],
-        [-27.381447, -51.59523],
-        [-27.380189, -51.59493],
-        [-27.380151, -51.595616],
-        [-27.376836, -51.594758],
-        [-27.376569, -51.595531]
-    ];
+
+    const getPaths = (path) => {
+        var bounds = [];
+        var polyline = new window.google.maps.LatLngBounds();
+        var center = null;
+        for (var i = 0; i < path.length; i++) {
+            var point = {
+                lat: path.getAt(i).lat(),
+                lng: path.getAt(i).lng()
+            };
+            bounds.push(point);
+            polyline.extend(point);
+        }
+        if (path.length) {
+            center = { lat: polyline.getCenter().lat(), lng: polyline.getCenter().lng() }
+        }
+
+        return { center: center, bounds: bounds }
+    }
+
     const handleGoogleMapApi = (google) => {
+        console.log('handleGoogleMapApi', noteForm.polygon)
         const map = google.map
         var bounds = new google.maps.LatLngBounds();
-        var myCountyCoords = [];
-        for (var i = 0; i < polygonPath.length; i++) {
-            var pt = new google.maps.LatLng(polygonPath[i][0], polygonPath[i][1]);
-            myCountyCoords.push(pt);
-            bounds.extend(pt)
-        }
+        var coords = noteForm.polygon.bounds ?? []
         map.fitBounds(bounds);
-
+        if (noteForm.polygon.center)
+            map.panTo(noteForm.polygon.center)
         var field = new google.maps.Polygon({
-            paths: [myCountyCoords],
+            paths: [coords],
             strokeColor: '#FF0000',
             strokeOpacity: 0.8,
             strokeWeight: 2,
@@ -149,6 +148,7 @@ function NoteForm(props) {
             map: map,
             editable: true
         });
+        field.setMap(map);
         const drawingManager = new google.maps.drawing.DrawingManager({
             drawingMode: google.maps.drawing.OverlayType.POLYGON,
             drawingControl: true,
@@ -175,39 +175,39 @@ function NoteForm(props) {
         });
 
         drawingManager.setMap(map);
-
         google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
             getPolygonData(polygon)
         });
 
         const getPolygonData = (polygon) => {
-            drawingManager.setOptions({
-                drawingMode: null,
-                drawingControlOptions: {
-                    position: google.maps.ControlPosition.TOP_CENTER,
-                    drawingModes: []
-                }
-            });
+            // drawingManager.setOptions({
+            //     drawingMode: null,
+            //     drawingControlOptions: {
+            //         position: google.maps.ControlPosition.TOP_CENTER,
+            //         drawingModes: []
+            //     }
+            // });
             field.setPath(polygon.getPath().getArray());
             polygon.setMap(null);
             polygon = null;
             field.setMap(map);
-            google.maps.event.addListener(field.getPath(), 'set_at', function (index, obj) {
-                // changed point, via map
-                console.log(field.getPath());
-                console.log("a point has changed");
-            });
-            google.maps.event.addListener(field.getPath(), 'insert_at', function (index, obj) {
-                // new point via map
-                console.log(field.getPath());
-                console.log("a point has been added");
-            });
-            google.maps.event.addListener(field.getPath(), "remove_at", function (index, obj) {
-                //removed point, via map
-                console.log(field.getPath());
-                console.log("a point has been removed");
-            });
+            handlePolygonChange(getPaths(field.getPath()))
         }
+        google.maps.event.addListener(field.getPath(), 'set_at', function (index, obj) {
+            // changed point, via map
+            handlePolygonChange(getPaths(field.getPath()))
+            console.log("a point has changed");
+        });
+        google.maps.event.addListener(field.getPath(), 'insert_at', function (index, obj) {
+            // new point via map
+            handlePolygonChange(getPaths(field.getPath()))
+            console.log("a point has been added");
+        });
+        google.maps.event.addListener(field.getPath(), "remove_at", function (index, obj) {
+            //removed point, via map
+            handlePolygonChange(getPaths(field.getPath()))
+            console.log("a point has been removed");
+        });
     }
     return (
         <div className="flex flex-col w-full">
@@ -278,7 +278,7 @@ function NoteForm(props) {
                                 key: process.env.REACT_APP_MAP_KEY
                             }}
                             defaultZoom={5}
-                            defaultCenter={[24.886, -70.268]}
+                            defaultCenter={[0, 0]}
                             options={{ scrollwheel: false, scaleControl: true }}
                             onGoogleApiLoaded={handleGoogleMapApi}
                         >

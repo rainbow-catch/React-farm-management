@@ -24,7 +24,7 @@ function NoteList(props)
 
             if ( labelId )
             {
-                data = data.filter((note) => note.labels.includes(labelId) && !note.archive);
+                data = data.filter((note) => (note.labels? note.labels.includes(labelId): null) && !note.archive);
             }
 
             if ( !id )

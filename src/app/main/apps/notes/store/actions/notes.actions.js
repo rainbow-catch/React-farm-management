@@ -44,7 +44,6 @@ export function toggleVariateDescSize() {
 }
 
 export function openNoteDialog(id) {
-    console.log("OPEN_NOTE_DIALOG, ", id)
     return {
         type: OPEN_NOTE_DIALOG,
         payload: id
